@@ -24,7 +24,7 @@ source hue_bashlibrary.sh
 ip='10.0.1.8'								# IP of hue bridge
 devicetype='raspberry'						# Link with bridge: type of device
 username='huelibrary'						# Link with bridge: username / app name
-loglevel=3									# 0 all logging off, # 1 gossip, # 2 verbose, # 3 errors
+loglevel=1									# 0 all logging off, # 1 gossip, # 2 verbose, # 3 errors
 
 
 # Variables of this scripts
@@ -88,4 +88,10 @@ fi
 
 
 # demo mode, call function demo with the lights 3 and 4
-hue_demo $lights
+# hue_demo $lights
+
+hue_onoff "off" 3
+
+hue_is_on 3
+echo "Result variable is: $result_hue_is_on"
+

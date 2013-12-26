@@ -15,7 +15,7 @@
 # Variables
 cmdname=''
 lastlog=''
-
+result_hue_is_on=-1
 
 # GENERIC WRAPPERS
 
@@ -126,6 +126,27 @@ function hue_get() {
 # $3 = force output regardless of log settings (for interactive functions)
 function hue_put() {
 	hue_put_apiurl "$1" "$username/$2" $3
+}
+
+
+
+# Only function that does not use one of the helpers - due to the need to parse the result
+# Function hue_is_on: return 0, if light is off, return 1 if light is on
+# $1 = light
+
+# Example: hue_is_on 3
+
+function hue_is_on() {
+	log 1 "curl -s -H \"Content-Type: application/json\" \"http://$ip/api/$username/lights/$1\""
+	output=$(curl -s -H "Content-Type: application/json" "http://$ip/api/$username/lights/$1")
+	log_error "$output"
+
+	if [[ "$output" == *\"on\":true* ]]
+	then
+		result_hue_is_on=1
+	else
+		result_hue_is_on=0
+	fi
 }
 
 
