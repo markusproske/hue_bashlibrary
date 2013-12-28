@@ -88,10 +88,9 @@ fi
 
 
 # demo mode, call function demo with the lights 3 and 4
-# hue_demo $lights
+hue_demo $lights
 
-hue_onoff "off" 3
-
-hue_is_on 3
-echo "Result variable is: $result_hue_is_on"
+# hue_onoff "on" 3
+# hue_is_on 3
+# echo "Result variable is: $result_hue_is_on"
 

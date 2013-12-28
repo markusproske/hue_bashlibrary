@@ -256,14 +256,15 @@ function hue_on_hue_sat_brightness() {
 
 # Function hue_on_mired: turns light(s) on with defined starting value (mired)
 # $1 = mired value (153 (6500K) to 500 (2000K)).
-# $2..$x = light(s)
+# $2 = brightness value (0-255)
+# $3..$x = light(s)
 # Examples: hue_on_mired 153 1 or hue_on_mired 500 3 4 6
 
-function hue_on_mired() {
+function hue_on_mired_brightness() {
 	# process all lights
-	for i in ${@:2}
+	for i in ${@:3}
 	do
-		hue_put "{ \"on\": true, \"ct\": $1 }" "lights/$i/state"
+		hue_put "{ \"on\": true, \"ct\": $1, \"bri\": $2 }" "lights/$i/state"
 	done
 }
 
@@ -357,7 +358,7 @@ function hue_demo() {
 	hue_onoff off $lights
 	sleep $delay	
 		
-	hue_on_mired 500 $lights
+	hue_on_mired_brightness 500 155 $lights
 	sleep $delay	
 	hue_onoff off $lights
 	sleep $delay	
