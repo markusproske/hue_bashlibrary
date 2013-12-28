@@ -30,7 +30,7 @@ function hue_demo() {
 	hue_onoff off $lights
 	sleep $delay	
 		
-	hue_on_mired 500 $lights
+	hue_on_mired_brightness 500 150 $lights
 	sleep $delay	
 	hue_onoff off $lights
 	sleep $delay	
