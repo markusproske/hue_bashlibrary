@@ -1,6 +1,6 @@
 ## The unofficial Philips Hue Bash Library
 
-This library allows **local** control of your Philips Hue system. The Hue BashLibrary uses curl to communicate with your Hue bridge. You can use this library with several Linux-based systems, Mac OS X, Raspberry (Raspbian) and many more. 
+This library allows **local** control of your Philips Hue system. The Hue BashLibrary uses curl to communicate with your Hue bridge. You can use this library with several Linux-based systems, Mac OS X, **Raspberry** (Raspbian) and many more. 
 
 The library offers bridge functions, light functions and some logging capabilities. Bridge functions are link / unlink, output the configuration and a lookup with meethue.com to obtain the IP of your bridge (if available). Light functions include on/off, all lights off, on with a specified hue/saturation/brightness or mired value, functions to change hue/saturation, brightness and mired (without touching the on/off state) and the alert functionality (lights will blink). Finally, there is a special function that reports if a specific light is currently on or off, the result is delivered in a global variable named "$result_hue_is_on". Please note that not all functions of the Philips Hue API are available, however, additional functions can be added easily using the implemented wrappers for get, put, post and delete. Take a look at the source of "hue_bashlibrary.sh" to see all functions and their parameters!
 
@@ -12,7 +12,9 @@ The file demo.sh provides a starting point for your own applications. It provide
 4. Run "./demo.sh", lights 3 and 4 will show off. You can change the lights used in the configuration section of the file.
 5. Enjoy!
 
-For real-world usage see Hue WakeUpLight and Hue Sunset (coming to G+ and GitHub soon).
+For real-world usage see 
+- **Hue WakeUpLight: https://github.com/markusproske/hue_wakeuplight**
+- **Hue Sunset: (coming to G+ and GitHub soon)**
 
 
 ## Examples
@@ -77,7 +79,7 @@ source hue_bashlibrary.sh
 # Mind the gap: do not change the names of these variables, the bash_library needs those...
 ip='10.0.1.8'								# IP of hue bridge
 devicetype='raspberry'						# Link with bridge: type of device
-username='huelibrary'						# Link with bridge: username / app name
+username='huelibrary'						# Link with bridge: username / app name (min 10 characters)
 loglevel=1									# 0 all logging off, # 1 gossip, # 2 verbose, # 3 errors
 
 
