@@ -130,7 +130,7 @@ function hue_put() {
 
 
 
-# Only function that does not use one of the helpers - due to the need to parse the result
+# Does not use one of the helpers - due to the need to parse the result
 # Function hue_is_on: return 0, if light is off, return 1 if light is on
 # $1 = light
 
@@ -147,6 +147,21 @@ function hue_is_on() {
 	else
 		result_hue_is_on=0
 	fi
+}
+
+
+# Does not use one of the helpers - due to the need to parse the result
+# Function hue_get_bri: return brightness level of the light
+# $1 = light
+
+# Example: hue_get_brightness 3
+
+function hue_get_brightness() {
+	log 1 "curl -s -H \"Content-Type: application/json\" \"http://$ip/api/$username/lights/$1\""
+	output=$(curl -s -H "Content-Type: application/json" "http://$ip/api/$username/lights/$1")
+	log_error "$output"
+
+	result_hue_get_brightness=`echo ${output} | perl -n -e'/\"bri\":(\d+),/ && print $1'`
 }
 
 
