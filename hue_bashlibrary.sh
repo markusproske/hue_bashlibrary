@@ -360,9 +360,9 @@ function hue_alert() {
 }
 
 # Function hue_effect: effect light(s)
-# $1 colorloop
+# $1 colorloop | off
 # $2..$x = light(s)
-# Examples: hue_effect colorloop 3
+# Examples: hue_effect colorloop 3 or hue_effect of 1 2 3
 function hue_effect() {
 	
 	if [[ "$1" == "colorloop" ]]
