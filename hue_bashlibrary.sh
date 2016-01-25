@@ -367,7 +367,7 @@ function hue_effect() {
 	
 	if [[ "$1" == "colorloop" ]]
 	then
-	  param="colorloop"
+		param="colorloop"
 	else
 		param="off"
 	fi
