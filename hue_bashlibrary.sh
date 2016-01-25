@@ -359,7 +359,25 @@ function hue_alert() {
 	done
 }
 
-
+# Function hue_effect: effect light(s)
+# $1 colorloop
+# $2..$x = light(s)
+# Examples: hue_effect colorloop 3
+function hue_effect() {
+	
+	if [[ "$1" == "colorloop" ]]
+	then
+	  param="colorloop"
+	else
+		param="off"
+	fi
+	
+	# process all lights
+	for i in ${@:2}
+	do
+		hue_put "{ \"effect\": \"$param\" }" "lights/$i/state"
+	done
+}
 
 # Function to show a couple of commands of the hue bash library for up to 8 lights
 function hue_demo() {
