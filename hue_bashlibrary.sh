@@ -331,6 +331,22 @@ function hue_setstate_hue_sat() {
 }
 
 
+
+# Function hue_setstate_xy: set the xy color-space of one or more lights
+# 
+# $1 = x-value (0-0.9)
+# $2 = y-value (0-0.9)
+# $3..$x = light(s)
+# Examples: hue_setstate_xy 0.584 0.268 3 
+function hue_setstate_xy() {
+        # process all lights
+        for i in ${@:3}
+        do
+                hue_put "{ \"xy\":[$1,$2] }" "lights/$i/state"
+        done
+}
+
+
 # Function hue_setstate_mired: set the mired value of one or more lights
 # Range of hue bulbs: 153 (6500K) to 500 (2000K).
 # Remember: this fails, if the light is not turned on!
