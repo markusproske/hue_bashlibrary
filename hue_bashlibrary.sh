@@ -268,6 +268,19 @@ function hue_on_hue_sat_brightness() {
 	done
 }
 
+#Function hue_on_xy_brightness: turns light(s) on with defined xy value in the CIE color space
+# $1 = x-value (0-0.8)
+# $2 = y-value (0-0.9)
+# $3 = brightness (0-255)
+# $4...$x = light(x)
+#examples: hue_on_xy_brightness .584 0.268 255 1
+
+function hue_on_xy_brightness() {
+	for i in ${@:4}
+	do
+		hue_put "{ \"on\": true, \"xy\":[$1,$2], \"bri\": $3 }" "lights/$i/state"
+	done
+}
 
 # Function hue_on_mired: turns light(s) on with defined starting value (mired)
 # $1 = mired value (153 (6500K) to 500 (2000K)).
